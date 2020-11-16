@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        *
+         {
+            touch-action: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        #canvas2
+        {
+            border:50px solid rgb(79, 144, 168);
+        }
+        #canvas
+        {
+            border:50px solid rgb(215, 244, 255);
+
+        }
+        #testdiv
+        {
+            border: 1px solid red;
+            width:200px;
+            height:200px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <canvas id="canvas2" width=400 height=400></canvas>
+    <canvas id="canvas" width=400 height=400></canvas>
+    <div id="testdiv"></div>
+    <video id="link" width="400" height="400" controls autoplay loop></video>
+    <script type="text/javascript">
+const el = document.getElementById('canvas');
+const el2 = document.getElementById('canvas2');
+const ctx = el.getContext('2d');
+const ctx2 = el2.getContext('2d');
+const link = document.getElementById('link');
+
+ctx.lineWidth = 1.01;
+
+ctx.lineJoin = "round"
+ctx.lineCap = "round";
+let offset = 0;
+
+function nativeLine(x1,y1,x2,y2)
+{
+    const startx = (x2 > x1) ? x1:x2;
+    const starty = (y2 > y1) ? y1:y2;
+
+    const endx = (x2 === startx)?x1:x2;
+    const endy = (y2 === starty)?y1:y2;
+
+
+    ctx.beginPath();
+    ctx.moveTo(startx,starty);
+
+    const dx = endx - startx;
+    const dy = endy - starty;
+    for(let x = startx; x<=endx; ++x)
+    {
+        y = starty + dy * (x - startx) / dx;
+        ctx.lineTo(x,y);
+        console.log("x ",x+" / y",y);
+    }
+    ctx.stroke();
+}
+
+function drawRawPixel2 (start,end)
+{
+    const floor = Math.floor;
+    const abs = Math.abs;
+    let startX = floor(start.x);
+    let startY = floor(start.y);
+    const endX = floor(end.x);
+    const endY = floor(end.y);
+    const dx = abs(endX - startX),
+    sx = startX < endX ? 1 : -1;
+    const dy = abs(endY - startY),sy = (startY < endY) ? 1 : -1;
+    let err = (dx>dy ? dx : -dy)/2;
+
+    while (true)
+    {
+        let newImg = ctx.getImageData(startX,startY,1,1);
+        const d = newImg.data;
+
+        d[0] = 0;
+        d[1] = 0;
+        d[2] = 0;
+        d[3] = 255;
+        ctx.putImageData(newImg,startX,startY);
+
+        if (startX === endX && startY === endY)
+        {
+            break;
+        }
+        const e2 = err;
+        if (e2 > -dx){err -= dy; startX += sx;}
+        if (e2 < dy){err += dx; startY += sy;}
+    }
+}
+
+
+let moveCount = 0;
+let points = [];
+
+function pos (x,y) {
+    return{x:x,y:y};
+}
+function getDist (a,b)
+{
+    let subx = b.x-a.x;
+    let suby = b.y-a.y;
+
+    return Math.sqrt(subx*subx + suby*suby);
+}
+let count = 0;
+function drawRawPixel (start,end)
+{
+    const floor = Math.floor;
+    const abs = Math.abs;
+    let startX = floor(start.x);
+    let startY = floor(start.y);
+    const endX = floor(end.x);
+    const endY = floor(end.y);
+    const dx = abs(endX - startX),
+    sx = startX < endX ? 1 : -1;
+    const dy = abs(endY - startY),sy = (startY < endY) ? 1 : -1;
+    let err = (dx>dy ? dx : -dy)/2;
+
+    let lx = startX;
+    let ly = startY;
+    while (1)
+    {
+        ctx.beginPath();
+        ctx.moveTo(lx+offset,ly+offset);
+
+        if (startX === endX && startY === endY)
+        {
+            ctx.stroke();
+            break;
+        }
+
+        const e2 = err;
+        if (e2 > -dx){err -= dy; startX += sx;}
+        if (e2 < dy){err += dx; startY += sy;}
+
+        ctx.lineTo(startX+offset,startY+offset);
+        ctx.stroke();
+
+
+        lx = startX;
+        ly = startY;
+    }
+}
+
+function getMidPoint(p1, p2)
+    {
+        return {
+            x: (p1.x+p2.x)*0.5,
+            y: (p1.y+p2.y)*0.5
+        };
+    }
+
+var isDrawing = false;
+
+const frame = window.requestAnimationFrame;
+let startTime = null;
+
+
+function animation(timestamp)
+{
+    if(isDrawing == false)
+    {
+        startTime = null;
+        return;
+    }
+    if(!startTime) startTime = timestamp;
+    let subTime = timestamp - startTime;
+
+    if(subTime >= 60)
+    {
+        startTime = timestamp;
+        stroke();
+    }
+
+    frame(animation);
+}
+
+lastpos = null;
+
+el.onmousedown = function(e) {
+  isDrawing = true;
+
+  ctx.clearRect(0,0,600,600)
+  ctx.beginPath();
+  ctx.moveTo(e.offsetX+offset,e.offsetY+offset)
+  lastpos = {x:e.offsetX+offset,y:e.offsetY+offset};
+
+}
+
+el.onmousemove = function(e) {
+    if (!isDrawing) return;
+
+    ctx.clearRect(0,0,600,600);
+    ctx.lineTo(e.offsetX+offset,e.offsetY+offset);
+    ctx.stroke();
+
+    lastpos = {x:e.offsetX+offset,y:e.offsetY+offset};
+};
+
+el.onmouseup = function() {
+    isDrawing = false;
+    points = [];
+
+    ctx2.drawImage(canvas,0,0);
+};
+    </script>
+</body>
+</html>

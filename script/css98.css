@@ -1,0 +1,1272 @@
+:root
+{
+    --desktopColor:#017f7e;
+    --desktopFontColor:white;
+    --windowColor:#E9E9E9;
+}
+
+* {
+    touch-action: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-family: 'Comfortaa-Bold', cursive;
+    cursor: default;
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+    background: var(--desktopColor);
+}
+
+.noHover{
+    pointer-events: none;
+}
+.windowPanel {
+    background-color: var(--windowColor);
+    border-width: 1px;
+    border-style: solid;
+    border-color: #dfdfdf #000 #000 #dfdfdf;
+}
+
+.innerPanel {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #fff #808080 #808080 #fff;
+}
+
+#titleBar {
+    width: calc(100% - 2px);
+    overflow: hidden;
+}
+
+#titleText {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    height: 18px;
+    font-size: 0.8em;
+    padding: 1px;
+}
+
+.titleTextGrad {
+    /* background-color: #0A246A; */
+    background: linear-gradient(to right, #0A246A, #A6CAF0);
+}
+#titleTextLeft
+{
+    margin-left:2px;
+}
+#titleTextRight
+{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right:5px;
+}
+
+#topBar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 3px 0px;
+    height: 19px;
+}
+
+#actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 0.8em;
+    height: 18px;
+    width: 100%;
+}
+
+#topMenuRightBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+}
+
+#titleFileNameClone
+{
+    opacity:0;
+    font-size: 0.85em;
+    white-space:pre;
+}
+#titleFileName
+{
+    background: transparent;
+    outline: 0px solid transparent;
+    border: 0px solid transparent;
+    color:white;
+    padding:0px;
+    height:14px;
+    font-size:1em;
+}
+#titleFileName:hover
+{
+    background-color:rgba(255, 255, 255, 0.342);
+}
+#timerText {
+    position: relative;
+    vertical-align: middle;
+    margin-top: 4px;
+    margin-right: 5px;
+    font-size: 0.9em;
+    font-family: 'Lucida Console', Courier, monospace;
+    height: 18px;
+}
+
+#selectModeBox {
+    border-width: 2px;
+    border-style: solid;
+    border-color: #808080 white white #808080;
+    height: 90%;
+    width: 45px;
+    background-color: #dfdfdf;
+    margin-right: 2px;
+}
+
+#selectModeBoxChild {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 75%;
+    border-width: 2px;
+    background-color: var(--windowColor);
+    transition: .1s;
+}
+
+.selectModeBoxMid {
+    margin-right: 2px;
+}
+
+.selectModeBoxStyle {
+    height: 70%;
+    border: 1px solid;
+    border-top-color: #fff;
+    border-left-color: #fff;
+    border-right-color: rgb(105, 105, 105);
+    border-bottom-color: rgb(105, 105, 105);
+}
+
+.changeModeClick {
+    cursor: pointer;
+}
+
+.topMenu {
+    border: 1px solid transparent;
+    margin-right: 8px;
+    padding: 3px;
+}
+
+.topMenu:hover {
+    background-color: rgb(216,216,216);
+}
+
+.subMenuButton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    height: 30px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.subMenu {
+    position: absolute;
+    top: 45px;
+    left: 0px;
+    display: none;
+    padding: 3px;
+    background-color: var(--windowColor);
+    z-index: 4;
+}
+
+.SubMenuList {
+    height: 30px;
+    padding-top: 5px;
+}
+
+.subMenuList:hover {
+    color: white;
+    background-color: #0A246A;
+}
+
+.subMenuListHover {
+    color: white;
+    background-color: #0A246A;
+}
+
+.fileMenuIcon {
+    margin-right: 5px;
+}
+
+.actionIcons {
+    vertical-align: bottom;
+    margin-right: 3px;
+}
+
+.subMenuList:hover .fileMenuIcon {
+    filter: invert(1);
+}
+
+#god {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    -ms-user-select: none;
+    width: 710px;
+}
+
+#windowMain {
+    display: flex;
+    flex-direction: column;
+    align-items: normal;
+    justify-content: flex-start;
+    margin: 0 auto;
+}
+
+#middleRightChild {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#replayHead {
+    position: relative;
+    left: -6px;
+    top: 0px;
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    width: calc(100% - 1px);
+    height: 19px;
+}
+
+#replayer {
+    width: 100%;
+    height: 20px;
+    position: relative;
+    top: 0px;
+    left: 0px;
+}
+
+#replayPlayButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-left: 6px;
+}
+
+#replayTimeBarText {
+    margin-left: 5px;
+    font-family: 'Lucida Console', Courier, monospace
+}
+
+#replaySpeedBox {
+    margin-left: 3px;
+    width: 130px;
+}
+
+#replayer,
+#replaySpeed1,
+#replaySpeed2,
+#replaySpeedBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#replaySpeed1 {
+    width: 80px;
+}
+
+#replaySpeed2 {
+    position: relative;
+    width: 120px;
+    margin-left: 5px;
+}
+
+.replayCursor {
+    position: relative;
+    height: 16px;
+    width: 7px;
+    top: -8px;
+    left: -6px;
+    border-color: white #808080 #808080 white;
+    border-style: solid;
+    border-width: 2px;
+    background-color: var(--windowColor);
+    z-index: 1;
+}
+
+#replayStrokeCursor {
+    display: none;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 0px;
+    height: 0px;
+    mix-blend-mode: difference;
+    border-top: 7px solid cyan;
+    border-right: 7px solid transparent;
+    z-index: 4;
+}
+
+#playIcon {
+    width: 17px;
+}
+
+#pauseIcon {
+    display: none;
+    width: 17px;
+}
+
+#replayTimeBar {
+    position: relative;
+    background-color: white;
+    border-color: #808080 white white #808080;
+    border-width: 1px;
+    border-style: solid;
+    width: 100%;
+    height: 4px;
+    margin-left: 10px;
+}
+
+#replaySpeedCheckBox:hover {
+    transform: scale(1.4);
+    transition: .1s;
+}
+
+#replaySpeedBar {
+    background-color: white;
+    border-color: #808080 white white #808080;
+    border-width: 1px;
+    border-style: solid;
+    width: 100%;
+    height: 4px;
+}
+
+#replaySpeedText {
+    font-size: 0.8em;
+    width: 35px;
+}
+
+#colorBarTopSpace {
+    width: 98%;
+    height: 40px;
+    border: 1px solid red;
+    margin: 0px 10px;
+}
+
+#colorBarRightSpace {
+    width: 40px;
+    height: 100%;
+    border: 1px solid red;
+    margin: 0px 10px;
+}
+
+#middle {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+#toolBar {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0px 5px;
+    width: 52px;
+    transform-origin: 0px 0px;
+    background-color: var(--windowColor);
+}
+
+.toolSetMoveButton {
+    height: 2px;
+    width: 100%;
+    margin-bottom: 2px;
+}
+
+.toolSetMoveButtonH {
+    width: 2px;
+    height: 100%;
+    margin-left: 2px;
+}
+
+#toolBox {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-content: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+    background-color: var(--windowColor);
+}
+#penBox
+{
+    background-color: var(--windowColor);
+}
+
+#canvasPanel {
+    position: relative;
+    left: 0px;
+    height: 0px;
+    overflow: hidden;
+    border: 20px solid #A0A0A0;
+    background-color: #A0A0A0;
+}
+
+#canvasPanel2 {
+    position: relative;
+    left: 0px;
+    top: 0px;
+    padding: 0px;
+    overflow: hidden;
+    background-color: white;
+    transform-origin: 0px 0px;
+}
+
+#canvas1 {
+    -ms-user-select: none;
+    touch-action: none;
+    z-index: 1;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+#canvas2 {
+    position: relative;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
+}
+
+.canvasChild {
+    image-rendering: optimizeSpeed;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -o-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: pixelated;
+    image-rendering: optimize-contrast;
+    -ms-interpolation-mode: nearest-neighbor;
+}
+
+#zoominBox {
+    display: none;
+    position: absolute;
+    z-index: 3;
+    top: 0px;
+    left: 0px;
+    width: 300px;
+    height: 300px;
+    border: 1px solid rgb(173, 41, 41);
+    mix-blend-mode: difference;
+}
+
+#canvasSizeBar {
+    width: 640x;
+    height: 10px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#space2 {
+    margin-left: 1px;
+}
+
+.canvasSize {
+    cursor: n-resize;
+}
+
+.canvasSizeButton {
+    width: 100%;
+    height: 2px;
+    background-color: #A0A0A0;
+    margin-top: 3px;
+}
+
+#canvasSizeBar:hover .canvasSizeButton {
+    background-color: rgb(104, 104, 104);
+}
+
+.toolButton1 {
+    margin-right: 10px;
+    vertical-align: middle;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.toolButton1:active {
+    color: rgb(129, 129, 129);
+}
+
+.tool2Button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    border-color: white #646464 #646464 white;
+    border-width: 2px;
+    border-style: solid;
+}
+
+.mirrorButton
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    border-color: white #646464 #646464 white;
+    border-width: 2px;
+    border-style: solid;
+}
+.mirrorButton:active {
+    border-color: #646464 white white #646464;
+}
+
+.mirrorButton:active #iconMirror {
+    transform: translate(2px, 2px);
+}
+
+img {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-touch-callout: none;
+}
+
+.icon2Active {
+    transform: translate(2px, 2px);
+}
+
+.icon2:active {
+    transform: translate(2px, 2px);
+}
+
+.tool2Button:active {
+    border-color: #646464 white white #646464;
+}
+
+.tool2Button:active .icon2 {
+    transform: translate(2px, 2px);
+}
+
+.tool2ButtonON {
+    border-color: #646464 white white #646464;
+    background: url(../img/toolbg.png) repeat;
+    background-color: transparent;
+}
+
+#timerSet {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-right: auto;
+}
+
+#penSizePanel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#penTypeButtonBox {
+    border: 1px solid transparent;
+    height: 17px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-color: #A0A0A0 white white #A0A0A0;
+    border-width: 1px;
+    border-style: solid;
+    padding: 3px;
+    margin-top: 7px;
+}
+
+.penTypeBox {
+    width: 100%;
+    padding: 2px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid transparent;
+    width: 15px;
+    height: 15px;
+}
+.penTypeBox:hover
+{
+    background-color: rgb(216, 216, 216);
+}
+
+#penTypeSquare {
+    width: 13px;
+    height: 13px;
+    background-color: black;
+}
+
+#penTypeRound {
+    width: 13px;
+    height: 13px;
+    background-color: black;
+    border-radius: 100%;
+}
+
+#penSizeBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-color: rgb(185, 178, 178) white white #A0A0A0;
+    border-width: 1px;
+    border-style: solid;
+    padding: 3px;
+}
+
+.penSizeShapeText
+{
+    text-align: center;
+    vertical-align: middle;
+}
+.penSizeShape {
+    font-size:0.5em;
+    background-color: black;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 50%;
+    font-size:0.5em;
+    color:white;
+}
+
+.penSizeBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 10px;
+    min-width: 25px;
+    border: 1px solid transparent;
+    padding:3px 0px;
+    /* margin-bottom: 5px; */
+    width: 100%;
+}
+.penSizeBox:not(.penSizeBoxSelected):hover
+{
+    background-color: rgb(216, 216, 216);
+}
+
+.penSizeBoxSelected {
+    background-color: #0078D7;
+    width: 100%;
+}
+
+.penSizeSelected {
+    background-color: white;
+}
+
+.toolSpace {
+    position: relative;
+    /* z-index: 4; */
+    height:auto;
+    width:auto;
+}
+
+#colorBar {
+    position: relative;
+    transform-origin: 0px 0px;
+    margin-bottom: 5px;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: var(--windowColor);
+    width: 340px;
+    height: 40px;
+    z-index: 2;
+}
+
+#toolMoveBox {
+    width: 50px;
+    height: 12px;
+    margin-bottom: 5px;
+}
+
+#toolMoveBoxV {
+    display: none;
+    width: 25px;
+    height: 35px;
+    margin-right:3px;
+}
+
+#colorMoveBox {
+    position: relative;
+    height: 100%;
+    width: 12px;
+}
+
+.colorBarMoveButton {
+    width: 2px;
+    height: 100%;
+    margin-right: 2px;
+}
+
+.grabBox {
+    background-color: rgb(163, 163, 163);
+}
+
+.grabBox:hover {
+    cursor: grab;
+    background-color: #0A246A
+}
+
+#colorPanel {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-left: 5px;
+}
+
+#colorBox,
+#customColorBox {
+    position:relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.customColor {
+    background-color: rgb(255, 255, 255);
+}
+
+#colorModeButton {
+    position: relative;
+    border-width: 2px;
+    border-color: white #A0A0A0 #A0A0A0 white;
+    border-style: solid;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 30px;
+    height: 30px;
+    margin: 3px;
+}
+
+#colorModeBG {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    font-size: 0.8em;
+}
+
+.penColorOutLine {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #A0A0A0 white white #A0A0A0;
+    margin-top: 1px;
+    margin-left: 1px;
+}
+
+.penColorOutLine:hover .pencolor
+{
+    border-color: transparent;
+    transform: scale(1.75);
+}
+
+.pencolor {
+    width: 12px;
+    height: 12px;
+    border-color: black transparent transparent black;
+    border-width: 1px 0px 0px 1px;
+    border-style: solid;
+}
+
+.pickedColorCross {
+    background:
+        linear-gradient(to top left,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0) calc(50% - 0.8px),
+        rgb(160, 160, 160) 50%,
+        rgba(0, 0, 0, 0) calc(50% + 0.8px),
+        rgba(0, 0, 0, 0) 100%),
+        linear-gradient(to top right,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0) calc(50% - 0.8px),
+        rgba(160, 160, 160, 1) 50%,
+        rgba(0, 0, 0, 0) calc(50% + 0.8px),
+        rgba(0, 0, 0, 0) 100%);
+
+}
+
+/* #loadButtonInput {
+    display: none;
+} */
+
+#aboutPreImage,#tempimg3,#tempimg
+{
+    opacity:0;
+    display: none;
+    z-index: -2;
+    height: auto;
+    width: auto;
+}
+
+#canvas3 {
+    position: absolute;
+    z-index: 2;
+    top: 0px;
+    left: 0px;
+}
+
+#canvas4 {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 2;
+}
+
+.buttonShake {
+    animation: shake 0.6s;
+    animation-iteration-count: 4;
+}
+
+@keyframes shake {
+    0% {
+        transform: translate(1px, 1px) rotate(0deg);
+    }
+
+    10% {
+        transform: translate(-1px, -2px) rotate(-1deg);
+    }
+
+    20% {
+        transform: translate(-3px, 0px) rotate(1deg);
+    }
+
+    30% {
+        transform: translate(3px, 2px) rotate(0deg);
+    }
+
+    40% {
+        transform: translate(1px, -1px) rotate(1deg);
+    }
+
+    50% {
+        transform: translate(-1px, 2px) rotate(-1deg);
+    }
+
+    60% {
+        transform: translate(-3px, 1px) rotate(0deg);
+    }
+
+    70% {
+        transform: translate(3px, 1px) rotate(-1deg);
+    }
+
+    80% {
+        transform: translate(-1px, -1px) rotate(1deg);
+    }
+
+    90% {
+        transform: translate(1px, 2px) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(1px, -2px) rotate(-1deg);
+    }
+}
+
+.replaycomplete {
+    animation: replayComplete 1s;
+    animation-iteration-count: 1;
+}
+
+@keyframes replayComplete {
+    0% {
+        filter: opacity(0%)
+    }
+
+    10% {
+        filter: opacity(10%)
+    }
+
+    20% {
+        filter: opacity(20%)
+    }
+
+    30% {
+        filter: opacity(30%)
+    }
+
+    40% {
+        filter: opacity(40%)
+    }
+
+    50% {
+        filter: opacity(50%)
+    }
+
+    60% {
+        filter: opacity(60%)
+    }
+
+    70% {
+        filter: opacity(70%)
+    }
+
+    80% {
+        filter: opacity(80%)
+    }
+
+    90% {
+        filter: opacity(90%)
+    }
+
+    100% {}
+}
+
+#tiny {
+    opacity: 0.45;
+}
+
+.tinyCursorON {
+    cursor: url(../img/tiny.cur), auto;
+}
+
+.zoominCursorON {
+    cursor: zoom-in;
+}
+
+#keyboImg {
+    height: 170px;
+}
+
+#helpPanel {
+    display: none;
+    height: 235px;
+    padding: 5px;
+    font-size: 0.9em;
+}
+
+.button {
+    display: inline-block;
+    padding: 20px 40px;
+    color: white;
+    position: absolute;
+    transform: translate(10px, 10px);
+    vertical-align: middle;
+    text-decoration: none;
+    font-size: 12px;
+    background-color: #3498db;
+    border: 1px solid black;
+}
+
+#windowInfoPanel {
+    height: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 0.8em;
+    margin: 3px 0px;
+}
+
+.windowInfo {
+    height: 100%;
+    border-color: #A0A0A0 white white #A0A0A0;
+    border-width: 1px;
+    border-style: solid;
+    margin-right: 2px;
+}
+
+#recordingPrograss {
+    position: relative;
+    width: 0%;
+    height: 100%;
+    background-color: #0A246A;
+}
+
+#recordinglimitBar {
+    flex-grow: 1;
+    position: relative;
+    width: 60px;
+    height: 100%;
+}
+
+#cursorHintBox {
+    flex-grow: 8;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 540px;
+    justify-content: flex-start;
+    font-size: 0.95em;
+}
+
+#etc {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+#tiny {
+    margin: 0px 5px;
+    font-size: 0.9em;
+}
+
+#tiny {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.desktopIconBox {
+    width: 100px;
+    text-align: center;
+    font-size: 0.8em;
+    min-height: 80px;
+    color: var(--desktopFontColor);
+    line-height: 120%;
+}
+
+.desktopIconBox > span
+{
+    background-color: var(--desktopColor);
+}
+
+#bottomRight {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    border-width: 1px;
+    border-color: #646464 white white #646464;
+    border-style: solid;
+    margin: 2px 5px;
+}
+
+.bottomSmallIcon {
+    margin-left: 5px;
+}
+
+#bottomTime {
+    font-size: 0.75em;
+}
+
+#desktopIconPanel {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    margin: 10px 0px;
+    margin-left: 5px;
+    height: 95%;
+    z-index: -5;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: flex-start;
+}
+
+.desktopLiveIcon:active {
+    transform: translate(2px,2px);
+}
+.desktopLiveIcon:hover {
+    text-decoration: underline;
+}
+
+.desktopLiveIcon > *{
+    cursor: pointer;
+}
+
+#bottomBar {
+    padding: 0px;
+    margin: 0px;
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+    height: 28px;
+    background-color: var(--windowColor);
+    border-width: 1px 0px 3px 0px;
+    border-style: solid;
+    border-color: #DFDFDF;
+
+    z-index: -5;
+}
+
+#bottombar2 {
+    height: 100%;
+    border-width: 1px 0px 0px 0px;
+    border-style: solid;
+    border-color: white;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-between;
+}
+
+.bottomSmallIcon {
+    margin-left: 7px;
+}
+
+.aboutLoading {
+    background: repeating-linear-gradient(to right, #BDBDBD, #527BB5, #BDBDBD);
+    width: 100%;
+    background-size: 200% auto;
+    background-position: 0 100%;
+    animation: gradient 2s infinite;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+#aboutImg
+{
+    transition: 1.85s;
+    transform-origin: 470px 180px;
+}
+#aboutPanel {
+    display: none;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+#aboutInfo {
+    position: absolute;
+    left: 10px;
+    top: 5px;
+    background-color:rgba(255, 255, 255, 0.603);
+    padding:4px;
+}
+
+#aboutImg {
+    position: relative;
+    left: 0px;
+    top: 0px;
+    margin-bottom: -5px;
+}
+
+#desktopColorPanel
+{
+    position: absolute;
+    display:none;
+    left:0px;
+    top:0px;
+    padding:0px;
+    width:324px;
+}
+#desktopColorPicker
+{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    left:0px;
+    top:0px;
+    width: 100%;
+    height:100%;
+}
+.desktopColorBox
+{
+    width: 40px;
+    height: 40px;
+}
+
+#themeTopBar
+{
+    position: relative;
+    height:18px;
+    width:calc(100% - 4px);
+    color:white;
+    font-size:0.9em;
+    padding:2px;
+}
+
+.OtherLink >*
+{
+    cursor: pointer;
+}
+.OtherLink:hover
+{
+    text-decoration: none;
+    color:white;
+}
+.OtherLink:link
+{
+    text-decoration: none;
+    color:white;
+}
+.OtherLink:active
+{
+    text-decoration: none;
+    color:white;
+}
+.OtherLink:visited
+{
+    text-decoration: none;
+    color:white;
+}

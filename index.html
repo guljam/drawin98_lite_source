@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Drawin98 v1.1</title>
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
+    <script defer type="text/javascript" src ="script/core.js"></script>
+    <link rel="stylesheet" href="script/css98.css">
+    <link rel="shortcut icon" href="dicon/fav.png" type="image/x-icon">
+    <link rel="icon" href="dicon/fav.png" type="image/x-icon">
+
+</head>
+<body id="body">
+    <div class="windowPanel" id="god">
+        <div class="innerPanel" id="innerWindowPanel">
+            <div class="titleClick" id="titleBar">
+                <div class="titleClick titleTextGrad" id="titleText">
+                    <div class="titleClick" id="titleTextLeft">
+                        <img class="titleClick" src="dicon/icon_title.png" style="vertical-align: middle; margin-right:3px;">
+                        <span class="titleClick" style="vertical-align: middle; margin-right:3px;">drawin98.exe -</span>
+                        <input class="titleClick" id="titleFileName" type="text" value="Untitled">
+                    </div>
+                </div>
+            </div>
+
+            <div id="windowMain">
+                <div id="topBar">
+                    <div id="actions">
+                        <div class="topMenu" id="menuFile">File
+                            <div class="subMenu innerPanel" id="menuFileChild">
+                                <div class="subMenuList saveButton" id="saveButtonBox"><div class="saveButton subMenuButton" id="saveButton"><img class="fileMenuIcon saveButton" src="img/icon_imagesave.png">Save image</div></div>
+                                <div class="subMenuList loadButton"><div class="loadButton subMenuButton" id="loadButton"><img class="fileMenuIcon loadButton" src="img/icon_imageload.png">Load image</div></div>
+                                <input id="loadButtonInput" type="file" accept=".jpeg,.jpg,.png,.bmp,.gif" style="width: 100px">
+                                <hr>
+                                <div class="subMenuList resetButton"><div class="resetButton subMenuButton" id="clearButton"><img class="fileMenuIcon clearButton" src="img/icon_clear.png">Clear canvas</div></div>
+                            </div>
+                        </div>
+
+                        <div class="topMenu replayHideSet menuTimer" id="menuTimer">Timer</div>
+                        <div class="topMenu replayHideSet" id="menuHelp">Shortcut-key</div>
+                        <div class="topMenu replayHideSet" id="menuAbout">About</div>
+                    </div><!--action end-->
+
+                    <div id="topMenuRightBox">
+                        <div id="timerText"></div>
+                    </div>
+                </div>
+
+                <div id="helpPanel">
+                    <img src="img/keybo.png">
+                    <div class="helptext" id="helpText">
+                    See bottom hint bar to get more information<br>
+                    [Recommand] Disable wacom windows-ink option<br>
+                    </div>
+                </div>
+
+                <div id="middle">
+                    <div class="toolSpace" id="space3">
+                        <div id="toolBar">
+                            <div class ="grabBox toolMoveClick" id="toolMoveBox"></div>
+                            <div class ="grabBox toolMoveClick moveBoxV" id="toolMoveBoxV"></div>
+                            <div id="toolBox">
+                                <div class="tool2Button tool2Click" id="undoButton0"><img class="tool2Click icon2" id="iconUndo0" src="img/icon_undo.png"></div>
+                                <div class="tool2Button tool2Click" id="redoButton1"><img class="tool2Click icon2" id="iconRedo1" src="img/icon_redo.png"></div>
+                                <div class="tool2Button tool2Click" id="lineButton2"><img class="tool2Click icon2" id="iconLine2" src="img/icon_line.png"></div>
+                                <div class="tool2Button tool2Click" id="spuitButton5"><img class="tool2Click icon2" id="iconSpuit5" src="img/icon_spuit.png"></div>
+                                <div class="tool2Button tool2Click" id="penButton3"><img class="tool2Click icon2" id="iconPen3" src="img/icon_pen.png"></div>
+                                <div class="tool2Button tool2Click" id="eraseButton4"><img class="tool2Click icon2" id="iconErase4" src="img/icon_erase.png"></div>
+                                <div class="tool2Button tool2Click" id="handButton6"><img class="tool2Click icon2" id="iconHand6" src="img/icon_hand.png"></div>
+                                <div class="tool2Button tool2Click" id="moveButton7"><img class="tool2Click icon2" id="iconMove7" src="img/icon_move.png"></div>
+                                <div class="tool2Button tool2Click" id="zoomoutButton8"><img class="tool2Click icon2" id="iconZoomout8" src="img/icon_zoomout.png"></div>
+                                <div class="tool2Button tool2Click" id="zoominButton9"><img class="tool2Click icon2" id="iconZoomin9" src="img/icon_zoomin.png"></div>
+                                <div class="mirrorButton mirrorClick" id="mirrorButton"><img class="mirrorClick" id="iconMirror" src="img/icon_mirror.png"></div>
+                            </div>
+                            <div class="penTypeClick" id="penTypeButtonBox">
+                                <div class="penTypeBox penTypeRound penTypeClick" id="penTypeRoundBox">
+                                    <div class="penTypeRound penTypeClick" id="penTypeRound"></div>
+                                </div>
+                                <div class="penTypeBox penTypeSquare" id="penTypeSquareBox">
+                                    <div class="penTypeSquare penTypeClick" id="penTypeSquare"></div>
+                                </div>
+                            </div>
+                            <div id="penSizePanel">
+                                <div id="penSizeBox">
+                                    <div class="penSizeClick penSizeBox" id="penSizeBox0"><div class="penSizeClick penSizeShape" id="penSize0"></div></div>
+                                    <div class="penSizeClick penSizeBox" id="penSizeBox1"><div class="penSizeClick penSizeShape" id="penSize1"></div></div>
+                                    <div class="penSizeClick penSizeBox" id="penSizeBox2"><div class="penSizeClick penSizeShape" id="penSize2"></div></div>
+                                    <div class="penSizeClick penSizeBox" id="penSizeBox3"><div class="penSizeClick penSizeShape" id="penSize3"></div></div>
+                                    <div class="penSizeClick penSizeBox" id="penSizeBox4"><div class="penSizeClick penSizeShape" id="penSize4"></div></div>
+                                    <div class="penSizeClick penSizeBox" id="penSizeBox5"><div class="penSizeClick penSizeShape" id="penSize5"></div></div>
+                                    <div class="penSizeClick penSizeBox" id="penSizeBox6"><div class="penSizeClick penSizeShape" id="penSize6"></div></div>
+                                    <div class="penSizeClick penSizeBox" id="penSizeBox7"><div class="penSizeClick penSizeShape" id="penSize7"></div></div>
+                                    <div class="penSizeClick penSizeBox" id="penSizeBox8"><div class="penSizeClick penSizeShape" id="penSize8" style="display:flex; flex-direction: row; align-items: center; justify-content: center; font-size:0.5em;"><div class="penSizeClick" id="penSizeText8">100</div></div></div>
+                                </div>
+                            </div><!-- penSizePanel end -->
+                        </div>
+                    </div>
+
+                    <div id="centerCanvas">
+                        <div class="toolSpace" id ="space1">
+                            <div id ="colorBar">
+                                <div class ="grabBox colorMoveClick" id="colorMoveBox"></div>
+                                <div class="colorModeClick" id="colorModeButton">
+                                    <div class="colorModeClick" id="colorModeBG">
+                                        <div class="colorModeClick" id="colorModeText"></div>
+                                    </div>
+                                </div>
+
+                                <div id="colorPanel">
+                                    <div id="colorBox">
+                                        <div class="penColorOutLine"><div class="penColorBox pencolor" id="penColorBox0" style="background-color: rgb(0,0,0)"></div></div>
+                                        <div class="penColorOutLine"><div class="penColorBox pencolor" id="penColorBox1" style="background-color: rgb(128,128,128)"></div></div>
+                                        <div class="penColorOutLine"><div class="penColorBox pencolor" id="penColorBox2" style="background-color: rgb(192,192,192)"></div></div>
+                                        <div class="penColorOutLine"><div class="penColorBox pencolor" id="penColorBox3" style="background-color: rgb(255,255,255)"></div></div>
+                                        <div class="penColorOutLine"><div class="penColorBox pencolor" id="penColorBox4" style="background-color: rgb(255,59,33)"></div></div>
+                                        <div class="penColorOutLine"><div class="penColorBox pencolor" id="penColorBox5" style="background-color: rgb(255,189,22)"></div></div>
+                                        <div class="penColorOutLine"><div class="penColorBox pencolor" id="penColorBox6" style="background-color: rgb(245,243,15)"></div></div>
+                                        <div class="penColorOutLine"><div class="penColorBox pencolor" id="penColorBox7" style="background-color: rgb(165,233,117)"></div></div>
+                                        <div class="penColorOutLine"><div class="penColorBox pencolor" id="penColorBox8" style="background-color: rgb(113,219,253)"></div></div>
+                                        <div class="penColorOutLine"><div class="penColorBox pencolor" id="penColorBox9" style="background-color: rgb(250,128,249)"></div></div>
+                                        <div class="penColorOutLine"><div class="penColorBox pencolor" id="penColorBox10" style="background-color: rgb(142,0,0)"></div></div>
+                                        <div class="penColorOutLine"><div class="penColorBox pencolor" id="penColorBox11" style="background-color: rgb(255,204,153)"></div></div>
+                                        <div class="penColorOutLine"><div class="penColorBox pencolor" id="penColorBox12" style="background-color: rgb(135,125,48)"></div></div>
+                                        <div class="penColorOutLine"><div class="penColorBox pencolor" id="penColorBox13" style="background-color: rgb(0,143,71)"></div></div>
+                                        <div class="penColorOutLine"><div class="penColorBox pencolor" id="penColorBox14" style="background-color: rgb(49,59,205)"></div></div>
+                                        <div class="penColorOutLine"><div class="penColorBox pencolor" id="penColorBox15" style="background-color: rgb(192,46,151)"></div></div>
+                                        <div class="penColorOutLine"><div class="penColorBox pencolor" id="penColorBox16" style="background-color: rgb(63,3,126)"></div></div>
+                                    </div>
+                                    <div id="customColorBox">
+                                        <div class="penColorOutLine"><div class="customColor pencolor"></div></div>
+                                        <div class="penColorOutLine"><div class="customColor pencolor"></div></div>
+                                        <div class="penColorOutLine"><div class="customColor pencolor"></div></div>
+                                        <div class="penColorOutLine"><div class="customColor pencolor"></div></div>
+                                        <div class="penColorOutLine"><div class="customColor pencolor"></div></div>
+                                        <div class="penColorOutLine"><div class="customColor pencolor"></div></div>
+                                        <div class="penColorOutLine"><div class="customColor pencolor"></div></div>
+                                        <div class="penColorOutLine"><div class="customColor pencolor"></div></div>
+                                        <div class="penColorOutLine"><div class="customColor pencolor"></div></div>
+                                        <div class="penColorOutLine"><div class="customColor pencolor"></div></div>
+                                        <div class="penColorOutLine"><div class="customColor pencolor"></div></div>
+                                        <div class="penColorOutLine"><div class="customColor pencolor"></div></div>
+                                        <div class="penColorOutLine"><div class="customColor pencolor"></div></div>
+                                        <div class="penColorOutLine"><div class="customColor pencolor"></div></div>
+                                        <div class="penColorOutLine"><div class="customColor pencolor"></div></div>
+                                        <div class="penColorOutLine"><div class="customColor pencolor"></div></div>
+                                        <div class="penColorOutLine"><div class="customColor pencolor"></div></div>
+                                    </div>
+                                </div><!-- colorPanel end -->
+                            </div><!-- colorbar End-->
+                        </div>
+                        <div id="canvasPanel">
+                            <div id="canvasPanel2">
+                                <canvas class="canvasChild" id="canvas2" width=600 height=390></canvas>
+                                <canvas class="canvasChild" id="canvas1" width=600 height=390 onmousedown="event.preventDefault ? event.preventDefault() : event.returnValue = false"></canvas>
+                                <canvas class="replaySet" id="canvas4" width=600 height=390></canvas>
+                                <div id="replayStrokeCursor"></div>
+                                <div id="zoominBox"></div>
+                            </div>
+
+                            <div id="aboutPanel">
+                                <div id="aboutImg"><img src="img/about.png"></div>
+                                <div id="aboutInfo">Twitter: <a id='c301' target='_blank' href='https://twitter.com/ninanoninini'>ninanoninini</a>, E-mail: cube4none@gmail.com</div>
+                            </div>
+                        </div>
+                        <div class ="canvasSize " id="canvasSizeBar">
+                            <div class="canvasSize canvasSizeButton"></div>
+                            <div class="canvasSize canvasSizeButton"></div>
+                        </div>
+                        <div class="toolSpace" id="space0">
+                        </div><!--space 0end -->
+                    </div><!--centerCanvasEnd-->
+
+                    <div class="toolSpace" id="space2"></div>
+                </div><!--middle end-->
+            </div> <!-- windowMain end -->
+
+            <div id="windowInfoPanel">
+                <div class="windowInfo" id="cursorHintBox">
+                    <span id="hintText"></span>
+                </div>
+                <div class="windowInfo" id="etc">
+                    <div id="tiny"><img style="vertical-align: middle; margin-right:4px;" src="img/icon_tiny.png">tiny cursor</div>
+                </div>
+            </div>
+            <!--windowInfoPanel end-->
+
+        </div><!-- inner end-->
+    </div><!-- window all end-->
+
+    <div class="windowPanel" id="desktopColorPanel">
+        <div class="innerPanel" style="padding:1px;">
+            <div class="titleTextGrad" id="themeTopBar">Background colors</div>
+            <div id="desktopColorPicker"></div>
+        </div>
+    </div>
+
+    <div id="desktopIconPanel">
+        <div class="desktopIconBox">
+            <img src="dicon/mycom.png"><br>
+            <span>My Computer</span><br>
+        </div>
+        <div class="desktopIconBox">
+            <img src="dicon/docu.png"><br>
+            <span>My Documents</span><br>
+        </div>
+        <div class="desktopIconBox">
+            <img src="dicon/netw.png"><br>
+            <span>Network</span><br>
+            <span>Neighborhood</span>
+        </div>
+        <div class="desktopIconBox">
+            <img src="dicon/bin.png"><br>
+            <span>Recycle<br>Bin</span>
+        </div>
+        <div class="desktopIconBox">
+            <img src="dicon/msn.png"><br>
+            <span>Setup MSN<br>Internet A...</span>
+        </div>
+        <div class="desktopIconBox">
+            <img src="dicon/wm.png"><br>
+            <span>Windows<br>Media Player</span>
+        </div>
+        <div class="desktopIconBox">
+            <img src="dicon/exp.png"><br>
+            <span>Internet<br>Explorer</span>
+        </div>
+        <div class="desktopIconBox">
+            <img src="dicon/folder.png"><br>
+            <span>My secret<br>folder</span>
+        </div>
+        <div class="desktopIconBox githubClick desktopLiveIcon">
+            <a href="https://github.com/guljam/drawin98_lite" target="_blank" class="OtherLink">
+            <img class="githubClick" src="dicon/icon_github.png"><br>
+            <span class="githubClick">Source code</span><br>
+            <span class="githubClick">on Github</span></a><br>
+        </div>
+        <div class="desktopIconBox 2020Click desktopLiveIcon">
+            <a href="https://guljam.github.io/2020FlashPaint/" target="_blank" class="OtherLink">
+            <img class="2020Click" src="dicon/2020flashpainticon.png"><br>
+            <span class="2020Click">FOFO</span><br>
+            <span class="2020Click">Paint.exe</span><br></a>
+        </div>
+        <div class="desktopIconBox drawin98Click desktopLiveIcon">
+            <img class="drawin98Click" src="dicon/dr2.png"><br>
+            <span class="drawin98Click">drawin98.exe</span><br>
+        </div>
+        <div class="desktopIconBox themeClick desktopLiveIcon">
+            <img class="themeClick" src="dicon/icon_theme.png"><br>
+            <span class="themeClick">Change<br>Desktop color</span><br>
+        </div>
+
+        <div class="desktopIconBox readmeClick readmeKOR desktopLiveIcon">
+            <a href="readme_kor.html" target="_blank" class="OtherLink">
+            <img class="readmeClick readmeKOR" src="dicon/txtfile.png"><br>
+            <span class="readmeClick readmeKOR">사용설명서.txt</span></a>
+        </div>
+        <div class="desktopIconBox readmeClick readmeJP desktopLiveIcon">
+            <a href="readme_jp.html" target="_blank" class="OtherLink">
+            <img class="readmeClick readmeJP" src="dicon/txtfile.png"><br>
+            <span class="readmeClick readmeJP">マニュアル.txt</span></a>
+        </div>
+        <div class="desktopIconBox readmeClick readmeENG desktopLiveIcon">
+            <a href="readme_eng.html" target="_blank" class="OtherLink">
+            <img class="readmeClick readmeENG" src="dicon/txtfile.png"><br>
+            <span class="readmeClick readmeENG">manual.txt</span></a>
+        </div>
+    </div>
+    <div id="bottomBar">
+        <div id="bottombar2">
+            <div id="bottomStart">
+                <img src="dicon/bottomleft.png">
+            </div>
+            <div id="bottomRight">
+                <img class="bottomSmallIcon" src="dicon/small/modem.png">
+                <img class="bottomSmallIcon" src="dicon/small/sound.png">
+                <img class="bottomSmallIcon" src="dicon/small/paint.png">
+                <div class="bottomSmallIcon" id="versionInfo" style="font-size:0.75em">drawin98 by <a id='c301' target='_blank' href='https://twitter.com/ninanoninini'>c301</a></div>
+            </div>
+        </div>
+    </div>
+
+
+    <a id="screenShooter" target="_blank"></a>
+    <img id="tempimg" src ="//:0" width=400 height=400>
+    <span id="titleFileNameClone"></span>
+    <audio id="startupSound">
+        <source src="img/aboutsound.mp3" type="audio/wav">
+    </audio>
+
+</body>
+</html>
