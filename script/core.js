@@ -149,9 +149,9 @@ let spuitLastY = 0;
 let spuitSlowMoveX = 0; //마우스 큰 움직임따라1px씩 움직이는 위치
 let spuitSlowMoveY = 0;
 
-// let penSmoothingTimer = 0;//펜보정 타이머
-// let penSmoothX = null;//펜 떨림 보정 pointerdown 시작 좌표
-// let penSmoothY = null;
+let penSmoothingTimer = 0;//펜보정 타이머
+let penSmoothX = null;//펜 떨림 보정 pointerdown 시작 좌표
+let penSmoothY = null;
 let handMoveX = 0; //손 툴, 캔버스 스크롤 얼마나 됐는지 저장하는 변수
 let handMoveY = 0;
 let handMoveClickX = 0;
@@ -393,10 +393,7 @@ function pointerMoveFunc(e)
       break;
     }
     case 3: {
-      // penSmoothing(x,y);
-      c1.lineTo(x, y);
-      c1.clearRect(0, 0, canvasWidth, canvasMaxHeight);
-      c1.stroke();
+      penSmoothing(x,y);
       break;
     }
     case 4: {
@@ -452,51 +449,51 @@ function pointerMoveFunc(e)
   }
 }
 
-// function penSmoothing(x,y)
-// {
-//   if(penSmoothX === null) return;
-//   clearTimeout(penSmoothingTimer);
+function penSmoothing(x,y)
+{
+  if(penSmoothX === null) return;
+  clearTimeout(penSmoothingTimer);
 
-//   const odd = penSizeOddFlag[penSizeIndex];
-//   const xx = odd === 1 ? x : x + 0.5;
-//   const yy = odd === 1 ? y : y + 0.5;
-//   let f = 0.85;
-//   const abs = Math.abs;
+  const odd = penSizeOddFlag[penSizeIndex];
+  const xx = odd === 1 ? x : x + 0.5;
+  const yy = odd === 1 ? y : y + 0.5;
+  let f = 0.85;
+  const abs = Math.abs;
 
-//   let ox = penSmoothX;
-//   let oy = penSmoothY;
-//   if (ox > xx) ox -= (ox - xx) * f;
-//   else if (ox < xx) ox += (xx - ox) * f;
+  let ox = penSmoothX;
+  let oy = penSmoothY;
+  if (ox > xx) ox -= (ox - xx) * f;
+  else if (ox < xx) ox += (xx - ox) * f;
 
-//   if (oy > yy) oy -= (oy - yy) * f;
-//   else if (oy < yy) oy += (yy - oy) * f;
+  if (oy > yy) oy -= (oy - yy) * f;
+  else if (oy < yy) oy += (yy - oy) * f;
 
-//   c1.lineTo(ox, oy);
-//   c1.clearRect(0, 0, canvasWidth, canvasMaxHeight);
-//   c1.stroke();
+  c1.lineTo(ox, oy);
+  c1.clearRect(0, 0, canvasWidth, canvasMaxHeight);
+  c1.stroke();
 
-//   if ((penSmoothX != ox || penSmoothY != oy)
-//   && (abs(penSmoothX-ox) >= 0.1 || abs(penSmoothY-oy) >= 0.1))
-//   {
-//     penSmoothingTimer = setTimeout(function()
-//     {
-//       penSmoothing(x,y);
-//     },20)
-//   }
-//   penSmoothX = ox;
-//   penSmoothY = oy;
-// }
+  if ((penSmoothX != ox || penSmoothY != oy)
+  && (abs(penSmoothX-ox) >= 0.1 || abs(penSmoothY-oy) >= 0.1))
+  {
+    penSmoothingTimer = setTimeout(function()
+    {
+      penSmoothing(x,y);
+    },20)
+  }
+  penSmoothX = ox;
+  penSmoothY = oy;
+}
 
-// function hasSameSign(a, b) {
-//   return (a ^ b) >= 0;
-// }
-//두점 거리 구하기
-// function getDist(a, b) {
-//   let subx = b.x - a.x;
-//   let suby = b.y - a.y;
+function hasSameSign(a, b) {
+  return (a ^ b) >= 0;
+}
+// 두점 거리 구하기
+function getDist(a, b) {
+  let subx = b.x - a.x;
+  let suby = b.y - a.y;
 
-//   return Math.sqrt(subx * subx + suby * suby);
-// }
+  return Math.sqrt(subx * subx + suby * suby);
+}
 
 //뭔가 colorbox scale해줄때 pencolor가 custom에 뭍혀서 강제로 zindex내려주는 함수
 function removeCustomColorZIndex()
@@ -2206,7 +2203,7 @@ doc.addEventListener("pointerup", function (e) {
         }
 
         case 3: {
-          // clearInterval(penSmoothingTimer);
+          clearInterval(penSmoothingTimer);
           c1.lineTo(xx, yy);
           c1.clearRect(0, 0, canvasWidth, canvasMaxHeight);
           c1.stroke();
